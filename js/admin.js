@@ -418,7 +418,7 @@ function addKhungSuaSanPham(masp) {
             <td>
                 <select>`
                     
-    var company = ["Apple", "Samsung", "Oppo", "Nokia", "Huawei", "Xiaomi","Realme", "Vivo", "Philips", "Mobell", "Mobiistar", "Itel","Coolpad", "HTC", "Motorola"];
+    var company = ["MacBook", "Samsung", "Oppo", "Nokia", "Huawei", "Xiaomi","Realme", "Vivo", "Philips", "Mobell", "Mobiistar", "Itel","Coolpad", "HTC", "Motorola"];
     for(var c of company) {
         if(sp.company == c)
             s += (`<option value="`+c+`" selected>`+c+`</option>`);

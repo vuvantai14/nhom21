@@ -30,7 +30,7 @@ function Promo(name, value) { // khuyen mai
 				break;
 
 			case "giareonline":
-				contentLabel = `HOT SALE`;
+				contentLabel = ``;
 				break;
 
 			case "moiramat":

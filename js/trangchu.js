@@ -25,11 +25,11 @@ window.onload = function () {
 	autocomplete(document.getElementById('search-box'), list_products);
 
 	// thêm tags (từ khóa) vào khung tìm kiếm
-	//var tags = [ "Apple","Asus"];, "Huawei", "asus", "lenovo"
+	//var tags = [ "Apple","Asus"];//, "Huawei", "Oppo", "Mobi"
 	//for (var t of tags) addTags(t, "index.html?search=" + t);
 
 	// Thêm danh sách hãng điện thoại
-	var company = ["Apple.png", "Asus.jpg"
+	var company = ["MacBook.png", "Asus.jpg","MSI.jpg"
 	//, "Oppo.jpg", "Nokia.jpg", "Huawei.jpg", "Xiaomi.png",
 	//	"Realme.png", "Vivo.jpg", "Philips.jpg", "Mobell.jpg", "Mobiistar.jpg", "Itel.jpg",
 	//	"Coolpad.png", "HTC.jpg", "Motorola.jpg"
@@ -63,11 +63,11 @@ window.onload = function () {
 		//addKhungSanPham(' GIÁ SỐC ONLINE', yellow_red, ['star=3', 'sort=rateCount-decrease'], soLuong, div);
 		//addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat', 'sort=rateCount-decrease'], soLuong, div);
 		//addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop', 'sort=rateCount-decrease'], soLuong, div);
-		addKhungSanPham('LapTop', yellow_red, ['promo=giareonline', 'sort=rateCount-decrease'], soLuong, div);
+		addKhungSanPham('LAPTOP', yellow_red, ['promo=giareonline', 'sort=rateCount-decrease'], soLuong, div);
 		//addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong, div);
 		//addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-3000000', 'sort=price'], soLuong, div);
 	}
-
+/*
 	// Thêm chọn mức giá
 	//addPricesRange(0, 2000000);
 	//addPricesRange(2000000, 4000000);
@@ -75,11 +75,11 @@ window.onload = function () {
 	addPricesRange(10000000, 20000000);
 	addPricesRange(20000000, 0);
 
-	/*// Thêm chọn khuyến mãi
+	// Thêm chọn khuyến mãi
 	addPromotion('giamgia');
 	addPromotion('tragop');
 	addPromotion('moiramat');
-	addPromotion('giareonline');*/
+	addPromotion('giareonline');
 
 	// Thêm chọn số sao
 	addStarFilter(3);
@@ -95,12 +95,12 @@ window.onload = function () {
 	addSortFilter('decrease', 'rateCount', 'Đánh giá giảm dần');
 	addSortFilter('ascending', 'name', 'Tên A-Z');
 	addSortFilter('decrease', 'name', 'Tên Z-A');
-
+*/
 	// Thêm filter đã chọn
 	addAllChoosedFilter();
 };
 
-var soLuongSanPhamMaxTrongMotTrang = 15;
+var soLuongSanPhamMaxTrongMotTrang = 8;
 
 // =========== Đọc dữ liệu từ url ============
 var filtersFromUrl = { // Các bộ lọc tìm được trên url sẽ đc lưu vào đây
@@ -254,12 +254,12 @@ function addKhungSanPham(tenKhung, color, filter, len, ele) {
 	}
 
 	// thêm nút xem tất cả rồi đóng tag
-	/*s += `	</div>
+	s += `	</div>
 			<a class="xemTatCa" href="index.html?` + filter.join('&') + `" style="` + borderA + `">
 				Xem tất cả ` + spResult.length + ` sản phẩm
 			</a>
 		</div> <hr>`;
-*/
+
 	// thêm khung vào contain-khung
 	ele.innerHTML += s;
 }
@@ -394,7 +394,7 @@ function timKiemTheoRAM(list, luongRam, soluong) {
 // Thêm bộ lọc đã chọn vào html
 function addChoosedFilter(type, textInside) {
 	var link = createLinkFilter('remove', type);
-	var tag_a = `<a href="` + link + `"><h3>` + textInside + ` <i class="fa fa-close"></i> </h3></a>`;
+	var tag_a = `<a href="` + link + `"><h3>` + textInside + ` <!--i class="fa fa-close"></i> </h3></a>`;
 
 	var divChoosedFilter = document.getElementsByClassName('choosedFilter')[0];
 	divChoosedFilter.innerHTML += tag_a;
@@ -650,7 +650,7 @@ function promoToString(name) {
 		case 'giamgia':
 			return 'Giảm giá';
 		case 'giareonline':
-			return 'Giá rẻ online';
+			return 'LAPTOP';
 		case 'moiramat':
 			return 'Mới ra mắt';
 	}

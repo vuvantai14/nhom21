@@ -1,8 +1,9 @@
 .companyMenu {
-	margin: 10px 0 30px; 
+	margin: 10px 0 10px; 
 }
 
 .companyMenu a {
+	margin: 0 0 0 10px;
     border: 2px solid #fff;
     height: 40px;
     line-height: 40px;
@@ -109,33 +110,55 @@
     border-radius: 4px;
     margin-right: 5px;
 }
-
+.contain-khungApple {
+	.khungSanPham {
+		width: 100%;
+		margin: 50px 0;
+		border-radius: 5px;
+		border: 2px solid #ff4d00; 
+		box-sizing: border-box; /* dùng để width ko vượt ra ngoài khi có border */
+	}
+	
+	.khungSanPham h3.tenKhung {
+		line-height: 1.5em;
+		font-size: 1.5em;
+		text-align: center;
+		margin: 0 auto;
+		border-radius: 1em;
+		color: white;
+		transform: translateY(-0.75em);
+	}
+	
+	.khungSanPham li {
+		list-style-type: none; 
+	}
+}
 /* Các khung sản phẩm */
 .contain-khungSanPham {
+	.khungSanPham {
+		width: 100%;
+		margin: 50px 0;
+		border-radius: 5px;
+		border: 2px solid #ff4d00; 
+		box-sizing: border-box; /* dùng để width ko vượt ra ngoài khi có border */
+	}
 	
+	.khungSanPham h3.tenKhung {
+		line-height: 1.5em;
+		font-size: 1.5em;
+		text-align: center;
+		margin: 0 auto;
+		border-radius: 1em;
+		color: white;
+		transform: translateY(-0.75em);
+	}
+	
+	.khungSanPham li {
+		list-style-type: none; 
+	}
 }
 
-.khungSanPham {
-	width: 100%;
-	margin: 50px 0;
-	border-radius: 5px;
-	border: 2px solid #ff4d00; 
-	box-sizing: border-box; /* dùng để width ko vượt ra ngoài khi có border */
-}
 
-.khungSanPham h3.tenKhung {
-	line-height: 1.5em;
-	font-size: 1.5em;
-	text-align: center;
-	margin: 0 auto;
-	border-radius: 1em;
-	color: white;
-	transform: translateY(-0.75em);
-}
-
-.khungSanPham li {
-	list-style-type: none; 
-}
 
 /* Nút xem tất cả */
 .xemTatCa {
