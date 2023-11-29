@@ -548,10 +548,10 @@ function addTopNav() {
 // Thêm header 
 function addHeader() {
     document.write(`        
-	<div class="header group">
+	<div class="header group" >
         <div class="logo">
             <a href="index.html">
-                <img src="img/logo1.jpg" alt="Trang chủ Smartphone Store" title="Trang chủ Smartphone Store">
+                <img src="img/logo1.png"style="width:50% ;" alt="Trang chủ LapTop" title="Trang chủ LapTop">
             </a>
         </div> <!-- End Logo -->
 
