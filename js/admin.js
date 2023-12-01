@@ -122,17 +122,6 @@ function addThongKe() {
         colors,
     ));
 
-    // var doughnutChart = copyObject(dataChart);
-    //     doughnutChart.type = 'doughnut';
-    // addChart('myChart2', doughnutChart);
-
-    // var pieChart = copyObject(dataChart);
-    //     pieChart.type = 'pie';
-    // addChart('myChart3', pieChart);
-
-    // var lineChart = copyObject(dataChart);
-    //     lineChart.type = 'line';
-    // addChart('myChart4', lineChart);
 }
 
 // ======================= Các Tab =========================
@@ -340,23 +329,6 @@ function autoMaSanPham(company) {
     document.getElementById('maspThem').value = company.substring(0, 3) + index;
 }
 
-// Xóa
-function xoaSanPham(masp, tensp) {
-    if (window.confirm('Bạn có chắc muốn xóa ' + tensp)) {
-        // Xóa
-        for(var i = 0; i < list_products.length; i++) {
-            if(list_products[i].masp == masp) {
-                list_products.splice(i, 1);
-            }
-        }
-
-        // Lưu vào localstorage
-        setListProducts(list_products);
-
-        // Vẽ lại table 
-        addTableProducts();
-    }
-}
 
 // Sửa
 function suaSanPham(masp) {
@@ -418,7 +390,7 @@ function addKhungSuaSanPham(masp) {
             <td>
                 <select>`
                     
-    var company = ["MacBook", "Samsung", "Oppo", "Nokia", "Huawei", "Xiaomi","Realme", "Vivo", "Philips", "Mobell", "Mobiistar", "Itel","Coolpad", "HTC", "Motorola"];
+    var company = ["MacBook","Asus","MSI"];
     for(var c of company) {
         if(sp.company == c)
             s += (`<option value="`+c+`" selected>`+c+`</option>`);
@@ -630,41 +602,6 @@ function getListDonHang(traVeDanhSachSanPham = false) {
     return result;
 }
 
-// Duyệt
-function duyet(maDonHang, duyetDon) {
-    var u = getListUser();
-    for(var i = 0; i < u.length; i++) {
-        for(var j = 0; j < u[i].donhang.length; j++) {
-            if(u[i].donhang[j].ngaymua == maDonHang) {
-                if(duyetDon) {
-                    if(u[i].donhang[j].tinhTrang == 'Đang chờ xử lý') {
-                        u[i].donhang[j].tinhTrang = 'Đã giao hàng';
-                    
-                    } else if(u[i].donhang[j].tinhTrang == 'Đã hủy') {
-                        alert('Không thể duyệt đơn đã hủy !');
-                        return;
-                    }
-                } else {
-                    if(u[i].donhang[j].tinhTrang == 'Đang chờ xử lý') {
-                        if(window.confirm('Bạn có chắc muốn hủy đơn hàng này. Hành động này sẽ không thể khôi phục lại !'))
-                            u[i].donhang[j].tinhTrang = 'Đã hủy';
-                    
-                    } else if(u[i].donhang[j].tinhTrang == 'Đã giao hàng') {
-                        alert('Không thể hủy đơn hàng đã giao !');
-                        return;
-                    }
-                }
-                break;
-            }
-        }
-    }
-
-    // lưu lại
-    setListUser(u);
-
-    // vẽ lại
-    addTableDonHang();
-}
 
 function locDonHangTheoKhoangNgay() {
     var from = document.getElementById('fromDate').valueAsDate;
@@ -786,39 +723,8 @@ function openThemNguoiDung() {
     window.alert('Not Available!');
 }
 
-// vô hiệu hóa người dùng (tạm dừng, không cho đăng nhập vào)
-function voHieuHoaNguoiDung(inp, taikhoan) {
-    var listUser = getListUser();
-    for(var u of listUser) {
-        if(u.username == taikhoan) {
-            let value = !inp.checked
-            u.off = value;
-            setListUser(listUser);
-            
-            setTimeout(() => alert(`${value ? 'Khoá' : 'Mở khoá'} tải khoản ${u.username} thành công.`), 500);
-            break;
-        }
-    }
-    var span = inp.parentElement.nextElementSibling;
-        span.innerHTML = (inp.checked?'Khóa':'Mở');
-}
 
-// Xóa người dùng
-function xoaNguoiDung(taikhoan) {
-    if(window.confirm('Xác nhận xóa '+taikhoan+'? \nMọi dữ liệu về '+taikhoan+' sẽ mất! Bao gồm cả những đơn hàng của '+taikhoan)) {
-        var listuser = getListUser();
-        for(var i = 0; i < listuser.length; i++) {
-            if(listuser[i].username == taikhoan) {
-                listuser.splice(i, 1); // xóa
-                setListUser(listuser); // lưu thay đổi
-                localStorage.removeItem('CurrentUser'); // đăng xuất khỏi tài khoản hiện tại (current user)
-                addTableKhachHang(); // vẽ lại bảng khách hàng
-                addTableDonHang(); // vẽ lại bảng đơn hàng
-                return;
-            }
-        }
-    }
-}
+
 
 // Sắp xếp
 function sortKhachHangTable(loai) {
@@ -905,9 +811,3 @@ function progress(percent, bg, width, height) {
                 <div class="progress-bar bg-info" style="width: ` + percent + `%; background-color:` + bg + `"></div>
             </div>`
 }
-
-// for(var i = 0; i < list_products.length; i++) {
-//     list_products[i].masp = list_products[i].company.substring(0, 3) + vitriCompany(list_products[i], i);
-// }
-
-// console.log(JSON.stringify(list_products));
