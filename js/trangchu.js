@@ -24,15 +24,9 @@ window.onload = function () {
 	// autocomplete cho khung tim kiem
 	autocomplete(document.getElementById('search-box'), list_products);
 
-	// thêm tags (từ khóa) vào khung tìm kiếm
-	//var tags = [ "Apple","Asus"];//, "Huawei", "Oppo", "Mobi"
-	//for (var t of tags) addTags(t, "index.html?search=" + t);
 
 	// Thêm danh sách hãng điện thoại
 	var company = ["MacBook.png", "Asus.jpg","MSI.jpg"
-	//, "Oppo.jpg", "Nokia.jpg", "Huawei.jpg", "Xiaomi.png",
-	//	"Realme.png", "Vivo.jpg", "Philips.jpg", "Mobell.jpg", "Mobiistar.jpg", "Itel.jpg",
-	//	"Coolpad.png", "HTC.jpg", "Motorola.jpg"
 	];
 	for (var c of company) addCompany("img/company/" + c, c.slice(0, c.length - 4));
 
@@ -60,42 +54,11 @@ window.onload = function () {
 
 		// Thêm các khung sản phẩm
 		var div = document.getElementsByClassName('contain-khungSanPham')[0];
-		//addKhungSanPham(' GIÁ SỐC ONLINE', yellow_red, ['star=3', 'sort=rateCount-decrease'], soLuong, div);
-		//addKhungSanPham('SẢN PHẨM MỚI', blue, ['promo=moiramat', 'sort=rateCount-decrease'], soLuong, div);
-		//addKhungSanPham('TRẢ GÓP 0%', yellow_red, ['promo=tragop', 'sort=rateCount-decrease'], soLuong, div);
+		
 		addKhungSanPham('LAPTOP', yellow_red, ['promo=giareonline', 'sort=rateCount-decrease'], soLuong, div);
-		//addKhungSanPham('GIẢM GIÁ LỚN', yellow_red, ['promo=giamgia'], soLuong, div);
-		//addKhungSanPham('GIÁ RẺ CHO MỌI NHÀ', green, ['price=0-3000000', 'sort=price'], soLuong, div);
+		
 	}
-/*
-	// Thêm chọn mức giá
-	//addPricesRange(0, 2000000);
-	//addPricesRange(2000000, 4000000);
-	//addPricesRange(4000000, 7000000);
-	addPricesRange(10000000, 20000000);
-	addPricesRange(20000000, 0);
 
-	// Thêm chọn khuyến mãi
-	addPromotion('giamgia');
-	addPromotion('tragop');
-	addPromotion('moiramat');
-	addPromotion('giareonline');
-
-	// Thêm chọn số sao
-	addStarFilter(3);
-	addStarFilter(4);
-	addStarFilter(5);
-
-	// Thêm chọn sắp xếp
-	addSortFilter('ascending', 'price', 'Giá tăng dần');
-	addSortFilter('decrease', 'price', 'Giá giảm dần');
-	addSortFilter('ascending', 'star', 'Sao tăng dần');
-	addSortFilter('decrease', 'star', 'Sao giảm dần');
-	addSortFilter('ascending', 'rateCount', 'Đánh giá tăng dần');
-	addSortFilter('decrease', 'rateCount', 'Đánh giá giảm dần');
-	addSortFilter('ascending', 'name', 'Tên A-Z');
-	addSortFilter('decrease', 'name', 'Tên Z-A');
-*/
 	// Thêm filter đã chọn
 	addAllChoosedFilter();
 };
@@ -290,8 +253,6 @@ function themNutPhanTrang(soTrang, trangHienTai) {
 	}
 }
 
-// Tính toán xem có bao nhiêu trang + trang hiện tại,
-// Trả về mảng sản phẩm trong trang hiện tại tính được
 function tinhToanPhanTrang(list, vitriTrang) {
 	var sanPhamDu = list.length % soLuongSanPhamMaxTrongMotTrang;
 	var soTrang = parseInt(list.length / soLuongSanPhamMaxTrongMotTrang) + (sanPhamDu ? 1 : 0);
@@ -307,8 +268,6 @@ function tinhToanPhanTrang(list, vitriTrang) {
 
 // ======== TÌM KIẾM (Từ mảng list truyền vào, trả về 1 mảng kết quả) ============
 
-// function timKiemTheoTen(list, ten, soluong) {}
-// hàm Tìm-kiếm-theo-tên được đặt trong dungchung.js , do trang chitietsanpham cũng cần dùng tới nó
 
 function timKiemTheoCongTySanXuat(list, tenCongTy, soluong) {
 	var count, result = [];
@@ -432,9 +391,6 @@ function addAllChoosedFilter() {
 	}
 }
 
-// Tạo link cho bộ lọc
-// type là 'add' hoặc 'remove',
-// tương ứng 'thêm' bộ lọc mới có giá trị = valueAdd, hoặc 'xóa' bộ lọc đã có
 function createLinkFilter(type, nameFilter, valueAdd) {
 	var o = copyObject(filtersFromUrl);
 	o.page = ''; // reset phân trang
