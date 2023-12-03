@@ -1,8 +1,8 @@
-function User(username, pass, ho, ten, email, products, donhang) {
+function User(username, pass, ho, ten, email,diaChi, products, donhang) {
 	this.ho = ho || '';
 	this.ten = ten || '';
 	this.email = email || '';
-
+	this.diaChi = diaChi|| '';
 	this.username = username;
 	this.pass = pass;
 	this.products = products || [];

@@ -92,7 +92,7 @@ function addProductToTable(user) {
 				<td colspan="4">TỔNG TIỀN: </td>
 				<td class="alignRight">` + numToString(totalPrice) + ` ₫</td>
 				<td class="thanhtoan" onclick="thanhToan()"> Thanh Toán </td>
-				<td class="xoaHet" onclick="xoaHet()"> Xóa hết </td>
+				<td class="chonDiaChi" onclick="chonDiaChi()"> Chọn Địa Chỉ </td>
 			</tr>
 		</tbody>
 	`;
@@ -131,15 +131,35 @@ function thanhToan() {
 	}
 }
 
-function xoaHet() {
+function chonDiaChi() {
+	document.write(`
+	   			<table>
+                    <tr>
+                        <td> <div>Địa chỉ cũ:</div> </td>
+                        <td> <div><input type="text"></div> </td>
+                    </tr>
+                    <tr>
+                        <td> <div>Địa chỉ mới:</div> </td>
+                        <td> <div><input type="text"></div> </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td> 
+                            <div><button onclick="changeDiaChi()">Đồng ý</button></div> 
+                        </td>
+                    </tr>
+                </table>
+            </td>
+			`);	
+}
+function changeDiaChi() {
 	if (currentuser.products.length) {
-		if (window.confirm('Bạn có chắc chắn muốn xóa hết sản phẩm trong giỏ !!')) {
+		if (window.confirm('Bạn đã thay đổi địa chỉ giao hàng!!')) {
 			currentuser.products = [];
 			capNhatMoiThu();
 		}
 	}
 }
-
 // Cập nhật số lượng lúc nhập số lượng vào input
 function capNhatSoLuongFromInput(inp, masp) {
 	var soLuongMoi = Number(inp.value);

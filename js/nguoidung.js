@@ -96,6 +96,11 @@ function addInfoUser(user) {
             <td> <i class="fa fa-pencil" onclick="changeInfo(this, 'email')"></i> </td>
         </tr>
         <tr>
+            <td>Địa Chỉ: </td>
+            <td> <input type="text" value="` + user.diaChi + `" readonly> </td>
+            <td> <i class="fa fa-pencil" onclick="changeInfo(this, 'diaChi')"></i> </td>
+        </tr>
+        <tr>
             <td colspan="3" style="padding:5px; border-top: 2px solid #ccc;"></td>
         </tr>
         <tr>
