@@ -44,7 +44,7 @@
 
 <body>
 	<img src="https://cdn.tgdd.vn/mwgcart/mwgcore/ContentMwg/images/homev2/fs-2710-3110-theme/desk/tgdd/banner-title.gif" alt="" style="width: 100%;">
-	<script> baddTopNav(); </script>
+	<!--script> addTopNav(); </script-->
 
 	<section>
 		<script> addHeader(); </script>
@@ -53,19 +53,17 @@
 			<div class="owl-carousel owl-theme"></div>
 		</div> <!-- End Banner -->
 
-		
+		<p id="demo"></p>
 
 		<br>
 		<div class="companyMenu group flexContain"></div>
 
-		<!--div class="flexContain">
+		<div class="flexContain">
 
 			<div class="pricesRangeFilter dropdown">
 				<button class="dropbtn">Giá tiền</button>
 				<div class="dropdown-content"></div>
 			</div>
-
-			
 
 			<div class="starFilter dropdown">
 				<button class="dropbtn">Số lượng sao</button>
@@ -76,19 +74,19 @@
 				<button class="dropbtn">Sắp xếp</button>
 				<div class="dropdown-content"></div>
 			</div>
-
+			
 		</div> <!-- End khung chọn bộ lọc -->
 
 		<div class="choosedFilter flexContain">
-			<!--a id="deleteAllFilter" style="display: none;">
-				<!--h3>Xóa bộ lọc</h3>
-			</a-->
-		</div> <!-- Những bộ lọc đã chọn -->
+			<a id="deleteAllFilter" style="display: none;">
+				<h3>Xóa bộ lọc</h3>
+			</a>
+		</div> <!--Những bộ lọc đã chọn -->
 		<hr>
 
 		<!-- Mặc định mới vào trang sẽ ẩn đi, nế có filter thì mới hiện lên -->
 		<div class="contain-products" style="display:none"> 
-			<!--div class="filterName">
+			<div class="filterName">
 				<input type="text" placeholder="Lọc trong trang theo tên..." onkeyup="filterProductsName(this)">
 			</div> <!-- End FilterName -->
 
@@ -109,6 +107,7 @@
 
 	<script>
 		addContainTaiKhoan(); addPlc();
+		
 	</script>
 
 	<div class="footer"><script>addFooter();</script></div>

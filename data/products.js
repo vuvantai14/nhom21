@@ -27,8 +27,8 @@ var list_products = [
     "company": "MacBook",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_air_m22.png",
     "price": "32.990.000",
-    "star": 0,
-    "rateCount": 0,
+    "star": 5,
+    "rateCount": 10,
     "promo": {
         "name": "giareonline",
         "value": "26.590.000"
@@ -51,8 +51,8 @@ var list_products = [
     "company": "MacBook",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/p/r/pro-m2.jpg",
     "price": "35.990.000",
-    "star": 0,
-    "rateCount": 0,
+    "star": 5,
+    "rateCount": 100,
     "promo": {
         "name": "giareonline",
         "value": "29.490.000"
@@ -99,7 +99,7 @@ var list_products = [
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_-_2023-06-08t005130.908.png",
     "price": "14.490.000",
     "star": 4,
-    "rateCount": 804,
+    "rateCount": 120,
     "promo": {
         "name": "giareonline",
         "value": "13.290.000"
@@ -122,7 +122,7 @@ var list_products = [
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_air_m2_8gb.png",
     "price": "32.990.000",
     "star": 4,
-    "rateCount": 804,
+    "rateCount": 500,
     "promo": {
         "name": "giareonline",
         "value": "30.390.000"
@@ -145,7 +145,7 @@ var list_products = [
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/m/s/msi_1.png",
     "price": "18.490.000",
     "star": 4,
-    "rateCount": 804,
+    "rateCount": 155,
     "promo": {
         "name": "giareonline",
         "value": "16.990.000"
@@ -191,7 +191,7 @@ var list_products = [
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/l/a/laptop-asus-tuf-gaming-f15-fx506hf-hn014w.png",
     "price": "21.990.000",
     "star": 4,
-    "rateCount": 804,
+    "rateCount": 678,
     "promo": {
         "name": "giareonline",
         "value": "16.990.000"
@@ -237,7 +237,7 @@ var list_products = [
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/2/_/2.17_1.png",
     "price": "23.900.000",
     "star": 4,
-    "rateCount": 804,
+    "rateCount": 456,
     "promo": {
         "name": "giareonline",
         "value": "17.990.000"
@@ -260,7 +260,7 @@ var list_products = [
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_spa.png",
     "price": "65.990.000",
     "star": 4,
-    "rateCount": 804,
+    "rateCount": 239,
     "promo": {
         "name": "giareonline",
         "value": "60.990.000"
@@ -284,7 +284,7 @@ var list_products = [
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/1/0/10h42.png",
     "price": "30.490.000",
     "star": 4,
-    "rateCount": 804,
+    "rateCount": 500,
     "promo": {
         "name": "giareonline",
         "value": "29.990.000"
@@ -308,7 +308,7 @@ var list_products = [
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/m/a/mac_pro.png",
     "price": "65.990.000",
     "star": 4,
-    "rateCount": 804,
+    "rateCount": 224,
     "promo": {
         "name": "giareonline",
         "value": "46.990.000"

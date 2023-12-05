@@ -81,13 +81,11 @@ function phanTich_URL_chiTietSanPham() {
     // Cập nhật thông số
     var info = document.getElementsByClassName('info')[0];
     var s = addThongSo('Màn hình', sanPhamHienTai.detail.screen);
-    s += addThongSo('Hệ điều hành', sanPhamHienTai.detail.os);
-    //s += addThongSo('Camara sau', sanPhamHienTai.detail.camara);    
+    s += addThongSo('Hệ điều hành', sanPhamHienTai.detail.os); 
     s += addThongSo('CPU', sanPhamHienTai.detail.cpu);
     s += addThongSo('Card đồ họa', sanPhamHienTai.detail.camaraFront);
     s += addThongSo('RAM', sanPhamHienTai.detail.ram);
     s += addThongSo('Bộ nhớ trong', sanPhamHienTai.detail.rom);
-    //s += addThongSo('Thẻ nhớ', sanPhamHienTai.detail.microUSB);
     s += addThongSo('Dung lượng pin', sanPhamHienTai.detail.battery);
     info.innerHTML = s;
 

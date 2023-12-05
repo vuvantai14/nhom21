@@ -4,11 +4,8 @@ window.onload = function () {
 
 	// autocomplete cho khung tim kiem
 	autocomplete(document.getElementById('search-box'), list_products);
-
-	// thêm tags (từ khóa) vào khung tìm kiếm
-	//var tags = [ "Apple","Asus"];//, "Huawei", "Oppo", "Mobi"
-	//for (var t of tags) addTags(t, "index.html?search=" + t)
-
+	
+	
 	currentuser = getCurrentUser();
 	addProductToTable(currentuser);
 }
@@ -132,6 +129,7 @@ function thanhToan() {
 		addAlertBox('Các sản phẩm đã được gửi vào đơn hàng và chờ xử lý.', '#17c671', '#fff', 4000);
 	}
 }
+<<<<<<< Updated upstream
 
 function chonDiaChi() {
 	document.getElementById("chondia").innerHTML = `  
@@ -162,6 +160,9 @@ function chonDiaChi() {
 }
 
 function changeDiaChi() {
+=======
+function xoaHet() {
+>>>>>>> Stashed changes
 	if (currentuser.products.length) {
 		
 			capNhatMoiThu();

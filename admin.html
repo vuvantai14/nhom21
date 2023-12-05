@@ -15,6 +15,7 @@
 
     <!-- Chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    
 
     <!-- Our files -->
     <link rel="stylesheet" href="css/admin/style.css">
@@ -57,17 +58,33 @@
             <div class="canvasContainer">
                 <canvas id="myChart1"></canvas>
             </div>
-
+            
             <div class="canvasContainer">
                 <canvas id="myChart2"></canvas>
             </div>
-
+            <p id="demo"></p>
             <div class="canvasContainer">
                 <canvas id="myChart3"></canvas>
             </div>
 
             <div class="canvasContainer">
                 <canvas id="myChart4"></canvas>
+            </div>
+            <div class="table-footer">
+                <div class="timTheoNgay">
+                    Từ ngày: <input type="date" id="fromDate1" >
+                    Đến ngày: <input type="date" id="toDate1" >
+                    
+                    <button onclick="locDonHangTheoKhoangNgay1()"><i class="fa fa-search"></i> Tìm</button>
+                </div>
+                
+                <select id="Company1" >
+                    <option value="MacBook">MacBook</option>
+                    <option value="Asus">Asus</option>
+                    <option value="MSI">MSI</option>
+                    <option value="all">Tất cả</option-->
+                </select>
+                <button onclick="locDonHangTheoKhoangNgay1()"><i class="fa fa-search"></i> Lọc</button>
             </div>
         </div>
 
@@ -266,7 +283,7 @@
                     <option value="taikhoan">Tìm theo tài khoản</option>
                 </select>
                 <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
-                <button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>
+                <!--button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button-->
             </div>
         </div> <!-- // khach hang -->
     </div> <!-- // main -->

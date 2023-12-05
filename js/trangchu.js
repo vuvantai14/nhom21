@@ -58,12 +58,33 @@ window.onload = function () {
 		addKhungSanPham('LAPTOP', yellow_red, ['promo=giareonline', 'sort=rateCount-decrease'], soLuong, div);
 		
 	}
+	addPricesRange(10000000, 15000000);
+	addPricesRange(15000000, 20000000);
+	addPricesRange(20000000, 25000000);
+	addPricesRange(25000000, 30000000);
+	addPricesRange(30000000, 0);
 
+	// Thêm chọn số sao
+	addStarFilter(3);
+	addStarFilter(4);
+	addStarFilter(5);
+	
+	// Thêm chọn sắp xếp
+	addSortFilter('ascending', 'price', 'Giá tăng dần');
+	addSortFilter('decrease', 'price', 'Giá giảm dần');
+	addSortFilter('ascending', 'star', 'Sao tăng dần');
+	addSortFilter('decrease', 'star', 'Sao giảm dần');
+	addSortFilter('ascending', 'rateCount', 'Đánh giá tăng dần');
+	addSortFilter('decrease', 'rateCount', 'Đánh giá giảm dần');
+	addSortFilter('ascending', 'name', 'Tên A-Z');
+	addSortFilter('decrease', 'name', 'Tên Z-A');
+	
 	// Thêm filter đã chọn
 	addAllChoosedFilter();
+	
 };
 
-var soLuongSanPhamMaxTrongMotTrang = 8;
+var soLuongSanPhamMaxTrongMotTrang = 4;
 
 // =========== Đọc dữ liệu từ url ============
 var filtersFromUrl = { // Các bộ lọc tìm được trên url sẽ đc lưu vào đây
@@ -100,11 +121,6 @@ function phanTich_URL(filters, saveFilter) {
 		var dauBang = filters[i].split('=');
 
 		switch (dauBang[0]) {
-			case 'search':
-				dauBang[1] = dauBang[1].split('+').join(' ');
-				result = timKiemTheoTen(result, dauBang[1]);
-				if (saveFilter) filtersFromUrl.search = dauBang[1];
-				break;
 
 			case 'price':
 				if (saveFilter) filtersFromUrl.price = dauBang[1];
@@ -253,6 +269,8 @@ function themNutPhanTrang(soTrang, trangHienTai) {
 	}
 }
 
+// Tính toán xem có bao nhiêu trang + trang hiện tại,
+// Trả về mảng sản phẩm trong trang hiện tại tính được
 function tinhToanPhanTrang(list, vitriTrang) {
 	var sanPhamDu = list.length % soLuongSanPhamMaxTrongMotTrang;
 	var soTrang = parseInt(list.length / soLuongSanPhamMaxTrongMotTrang) + (sanPhamDu ? 1 : 0);
@@ -268,6 +286,8 @@ function tinhToanPhanTrang(list, vitriTrang) {
 
 // ======== TÌM KIẾM (Từ mảng list truyền vào, trả về 1 mảng kết quả) ============
 
+// function timKiemTheoTen(list, ten, soluong) {}
+// hàm Tìm-kiếm-theo-tên được đặt trong dungchung.js , do trang chitietsanpham cũng cần dùng tới nó
 
 function timKiemTheoCongTySanXuat(list, tenCongTy, soluong) {
 	var count, result = [];
@@ -306,7 +326,7 @@ function timKiemTheoGiaTien(list, giaMin, giaMax, soluong) {
 	else count = list.length;
 
 	for (var i = 0; i < list.length; i++) {
-		var gia = parseInt(list[i].price.split('.').join(''));
+		var gia = parseInt(list[i].promo.value.split('.').join(''));
 		if (gia >= giaMin && gia <= giaMax) {
 			result.push(list[i]);
 			count--;
@@ -353,7 +373,7 @@ function timKiemTheoRAM(list, luongRam, soluong) {
 // Thêm bộ lọc đã chọn vào html
 function addChoosedFilter(type, textInside) {
 	var link = createLinkFilter('remove', type);
-	var tag_a = `<a href="` + link + `"><h3>` + textInside + ` <!--i class="fa fa-close"></i> </h3></a>`;
+	var tag_a = `<a href="` + link + `"><h3>` + textInside + ` <i class="fa fa-close"></i> </h3></a>`;
 
 	var divChoosedFilter = document.getElementsByClassName('choosedFilter')[0];
 	divChoosedFilter.innerHTML += tag_a;
@@ -391,6 +411,9 @@ function addAllChoosedFilter() {
 	}
 }
 
+// Tạo link cho bộ lọc
+// type là 'add' hoặc 'remove',
+// tương ứng 'thêm' bộ lọc mới có giá trị = valueAdd, hoặc 'xóa' bộ lọc đã có
 function createLinkFilter(type, nameFilter, valueAdd) {
 	var o = copyObject(filtersFromUrl);
 	o.page = ''; // reset phân trang
@@ -606,7 +629,7 @@ function promoToString(name) {
 		case 'giamgia':
 			return 'Giảm giá';
 		case 'giareonline':
-			return 'LAPTOP';
+			return 'Giá rẻ online';
 		case 'moiramat':
 			return 'Mới ra mắt';
 	}

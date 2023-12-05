@@ -6,7 +6,6 @@ var adminInfo = [{
 function getListAdmin() {
     return JSON.parse(window.localStorage.getItem('ListAdmin'));
 }
-
 function setListAdmin(l) {
     window.localStorage.setItem('ListAdmin', JSON.stringify(l));
 }
@@ -17,12 +16,197 @@ function khoiTao() {
     // get data từ localstorage
     list_products = getListProducts() || list_products;
     adminInfo = getListAdmin() || adminInfo;
-
+    signUp1();
+    
+	themVaoGioHang1("App0",new Date('2023-9-15 07:00:00' ));
+    themVaoGioHang1("Asu0",new Date('2023-12-4 07:00:00'));
+    themVaoGioHang1("MSI0",new Date('2023-5-23 07:00:00'));
+    themVaoGioHang1("App0",new Date());
+    themVaoGioHang1("Asu0",new Date());
+    themVaoGioHang1("MSI0",new Date());
     setupEventTaiKhoan();
     capNhat_ThongTin_CurrentUser();
     addEventCloseAlertButton();
 }
+function themVaoGioHang1(masp,today) {
+    var user = getCurrentUser();
+    /*var a = Math.floor(Math.random() * 11) ;
+    var b = Math.floor(Math.random() * 27) +1;
+    var today = new Date();
+    today.setDate(b);
+    today.setMonth(a);
+    today.toLocaleString();*/
 
+    if (!user) {
+        //alert('Bạn cần đăng nhập để mua hàng !');
+        //showTaiKhoan(true);
+        return;
+    }
+    if (user.off) {
+        alert('Tài khoản của bạn hiện đang bị khóa nên không thể mua hàng!');
+        addAlertBox('Tài khoản của bạn đã bị khóa bởi Admin.', '#aa0000', '#fff', 10000);
+        return;
+    }
+    //var t = new Date();
+    var daCoSanPham = false;;
+
+    for (var i = 0; i < user.products.length; i++) { // check trùng sản phẩm
+        if (user.products[i].ma == masp) {
+            //user.products[i].soluong++;
+            daCoSanPham = true;
+            break;
+        }
+    }
+
+    if (!daCoSanPham) { // nếu không trùng thì mới thêm sản phẩm vào user.products
+        user.products.push({
+            "ma": masp,
+            "soluong": 1,
+            "date": today
+        });
+    }
+    
+    //animateCartNumber();
+    //addAlertBox('Đã thêm ' + tensp + ' vào giỏ.', '#17c671', '#fff', 3500);
+    
+    setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
+    updateListUser(user); // cập nhật list user
+    capNhat_ThongTin_CurrentUser(); // cập nhật giỏ hàng
+    if(user.donhang.length<3){
+    user.donhang.push({
+        "sp": user.products,
+        "ngaymua": today,
+        "tinhTrang": 'Đang chờ xử lý'
+    });
+    
+    user.products = [];
+    capNhatMoiThu1(user);
+}
+}
+function capNhatMoiThu1(currentuser) { // Mọi thứ
+	//animateCartNumber();
+    
+	// cập nhật danh sách sản phẩm trong localstorage
+	setCurrentUser(currentuser);
+    
+	updateListUser(currentuser);
+
+	// cập nhật danh sách sản phẩm ở table
+	addProductToTable(currentuser);
+	// Cập nhật trên header
+	capNhat_ThongTin_CurrentUser();
+}
+
+function addProductToTable(user) {
+	var table = document.getElementsByClassName('listSanPham')[0];
+    
+
+	var s = `
+		<tbody>
+			<tr>
+				<th>STT</th>
+				<th>Sản phẩm</th>
+				<th>Giá</th>
+				<th>Số lượng</th>
+				<th>Thành tiền</th>
+				<th>Thời gian</th>
+				<th>Xóa</th>
+			</tr>`;
+
+	if (!user) {
+		s += `
+			<tr>
+				<td colspan="7"> 
+					<h1 style="color:red; background-color:white; font-weight:bold; text-align:center; padding: 15px 0;">
+						Bạn chưa đăng nhập !!
+					</h1> 
+				</td>
+			</tr>
+		`;
+		table.innerHTML = s;
+		return;
+	} else if (user.products.length == 0) {
+        
+
+		s += `
+			<tr>
+				<td colspan="7"> 
+					<h1 style="color:green; background-color:white; font-weight:bold; text-align:center; padding: 15px 0;">
+						Giỏ hàng trống !!
+					</h1> 
+				</td>
+			</tr>
+		`;
+        
+        
+		return;
+	}
+
+	var totalPrice = 0;
+	for (var i = 0; i < user.products.length; i++) {
+		var masp = user.products[i].ma;
+		var soluongSp = user.products[i].soluong;
+		var p = timKiemTheoMa(list_products, masp);
+		var price = (p.promo.name == 'giareonline' ? p.promo.value : p.price);
+		var thoigian = new Date(user.products[i].date).toLocaleString();
+		var thanhtien = stringToNum(price) * soluongSp;
+
+		s += `
+			<tr>
+				<td>` + (i + 1) + `</td>
+				<td class="noPadding imgHide">
+					<a target="_blank" href="chitietsanpham.html?` + p.name.split(' ').join('-') + `" title="Xem chi tiết">
+						` + p.name + `
+						<img src="` + p.img + `">
+					</a>
+				</td>
+				<td class="alignRight">` + price + ` ₫</td>
+				<td class="soluong" >
+					<button onclick="giamSoLuong('` + masp + `')"><i class="fa fa-minus"></i></button>
+					<input size="1" onchange="capNhatSoLuongFromInput(this, '` + masp + `')" value=` + soluongSp + `>
+					<button onclick="tangSoLuong('` + masp + `')"><i class="fa fa-plus"></i></button>
+				</td>
+				<td class="alignRight">` + numToString(thanhtien) + ` ₫</td>
+				<td style="text-align: center" >` + thoigian + `</td>
+				<td class="noPadding"> <i class="fa fa-trash" onclick="xoaSanPhamTrongGioHang(` + i + `)"></i> </td>
+			</tr>
+		`;
+		// Chú ý nháy cho đúng ở giamsoluong, tangsoluong
+		totalPrice += thanhtien;
+	}
+
+	s += `
+			<tr style="font-weight:bold; text-align:center">
+				<td colspan="4">TỔNG TIỀN: </td>
+				<td class="alignRight">` + numToString(totalPrice) + ` ₫</td>
+				<td class="thanhtoan" onclick="thanhToan()"> Thanh Toán </td>
+				<td class="xoaHet" onclick="xoaHet()"> Xóa hết </td>
+			</tr>
+		</tbody>
+	`;
+    //document.getElementById("demo").innerHTML = 11;
+	table.innerHTML = s;
+}
+
+function signUp1() {
+    var newUser = new User("tri", "tri", "tri", "tri", "tri@gmail.com");
+
+    // Lấy dữ liệu các khách hàng hiện có
+    var listUser = getListUser();
+
+    // Kiểm tra xem dữ liệu form có trùng với khách hàng đã có không
+    for (var u of listUser) {
+        if (newUser.username == u.username) {
+            return false;
+        }
+    }
+
+    // Lưu người mới vào localstorage
+    listUser.push(newUser);
+    window.localStorage.setItem('ListUser', JSON.stringify(listUser));
+
+    return false;
+}
 // ========= Các hàm liên quan tới danh sách sản phẩm =========
 // Localstorage cho dssp: 'ListProducts
 function setListProducts(newList) {
@@ -221,7 +405,6 @@ function logIn(form) {
     form.username.focus();
     return false;
 }
-
 function signUp(form) {
     var ho = form.ho.value;
     var ten = form.ten.value;
@@ -639,14 +822,14 @@ function addContainTaiKhoan() {
                             <label>
                                 Tên đăng nhập<span class="req">*</span>
                             </label>
-                            <input name='username' type="text" required autocomplete="off" />
+                            <input name='username' type="text" value="tri"/>
                         </div> <!-- /user name -->
 
                         <div class="field-wrap">
                             <label>
                                 Mật khẩu<span class="req">*</span>
                             </label>
-                            <input name="pass" type="password" required autocomplete="off" />
+                            <input name="pass" type="password" value="tri"/>
                         </div> <!-- pass -->
 
                         <p class="forgot"><a href="#">Quên mật khẩu?</a></p>
@@ -835,9 +1018,6 @@ function getThongTinSanPhamFrom_TheGioiDiDong() {
 						case "Hệ điều hành:":
 							result.detail.os = giatri;
 							break;
-						case "Camera sau:":
-							result.detail.camara = giatri;
-							break;
 						case "Camera trước:":
 							result.detail.camaraFront = giatri;
 							break;
@@ -849,9 +1029,6 @@ function getThongTinSanPhamFrom_TheGioiDiDong() {
 							break;
 						case "Bộ nhớ trong:":
 							result.detail.rom = giatri;
-							break;
-						case "Thẻ nhớ:":
-							result.detail.microUSB = giatri;
 							break;
 						case "Dung lượng pin:":
 							result.detail.battery = giatri;

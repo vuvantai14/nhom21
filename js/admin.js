@@ -6,17 +6,12 @@ window.onload = function () {
     adminInfo = getListAdmin() || adminInfo;
 
     addEventChangeTab();
+    addTableProducts();
+    addTableDonHang();
+    addTableKhachHang();
+    addThongKe();
 
-    if (window.localStorage.getItem('admin')) {
-        addTableProducts();
-        addTableDonHang();
-        addTableKhachHang();
-        addThongKe();
-
-        openTab('Trang Chủ')
-    } else {
-        document.body.innerHTML = `<h1 style="color:red; with:100%; text-align:center; margin: 50px;"> Truy cập bị từ chối.. </h1>`;
-    }
+    openTab('Trang Chủ')
 }
 
 function logOutAdmin() {
@@ -38,9 +33,9 @@ function addChart(id, chartOption) {
 
 function createChartConfig(
     title = 'Title',
-    charType = 'bar', 
+    charType = 'line', 
     labels = ['nothing'], 
-    data = [2], 
+    data = [2,3], 
     colors = ['red'], 
 ) {
     return {
@@ -72,57 +67,261 @@ function createChartConfig(
         }
     };
 }
-
 function addThongKe() {
+
     var danhSachDonHang = getListDonHang(true);
-
-    var thongKeHang = {}; // Thống kê hãng
-
+    var thongKengaygio = {}; // Thống kê hãng
     danhSachDonHang.forEach(donHang => {
         // Nếu đơn hàng bị huỷ thì không tính vào số lượng bán ra
         if(donHang.tinhTrang === 'Đã hủy') return;
-
+        
         // Lặp qua từng sản phẩm trong đơn hàng
         donHang.sp.forEach(sanPhamTrongDonHang => {
-            let tenHang = sanPhamTrongDonHang.sanPham.company;
             let soLuong = sanPhamTrongDonHang.soLuong;
             let donGia = stringToNum(sanPhamTrongDonHang.sanPham.price);
             let thanhTien = soLuong * donGia;
-
-            if(!thongKeHang[tenHang]) {
-                thongKeHang[tenHang] = {
+            let d=new Date(donHang.ngaygio).toLocaleDateString();
+            
+            if(!thongKengaygio[d]) {
+                thongKengaygio[d] = {
                     soLuongBanRa: 0,
                     doanhThu: 0,
                 }
             }
-
-            thongKeHang[tenHang].soLuongBanRa += soLuong;
-            thongKeHang[tenHang].doanhThu += thanhTien;
+            thongKengaygio[d].soLuongBanRa += soLuong;
+            thongKengaygio[d].doanhThu += thanhTien;
+            
         })
+
+        
     })
 
 
     // Lấy mảng màu ngẫu nhiên để vẽ đồ thị
-    let colors = getListRandomColor(Object.keys(thongKeHang).length);
+    let colors = getListRandomColor(Object.keys(thongKengaygio).length);
 
     // Thêm thống kê
+    
     addChart('myChart1', createChartConfig(
         'Số lượng bán ra',
         'bar', 
-        Object.keys(thongKeHang), 
-        Object.values(thongKeHang).map(_ =>  _.soLuongBanRa),
+        Object.keys(thongKengaygio), 
+        Object.values(thongKengaygio).map(_ =>  _.soLuongBanRa),
         colors,
     ));
 
     addChart('myChart2', createChartConfig(
         'Doanh thu',
         'doughnut', 
-        Object.keys(thongKeHang), 
-        Object.values(thongKeHang).map(_ =>  _.doanhThu),
+        Object.keys(thongKengaygio), 
+        Object.values(thongKengaygio).map(_ =>  _.doanhThu),
         colors,
     ));
 
 }
+function locDonHangTheoKhoangNgay2() {
+    var inp = document.getElementById('Company1').value;
+    var from = document.getElementById('fromDate1').valueAsDate;
+    var to = document.getElementById('toDate1').valueAsDate;
+    var danhSachDonHang = getListDonHang(true);
+    var thongKengaygio = {};
+    var thongKengaygio0 = {};
+    var i=0;
+    //var thongKeHang = {};
+    danhSachDonHang.forEach(donHang => {
+        // Nếu đơn hàng bị huỷ thì không tính vào số lượng bán ra
+        if(donHang.tinhTrang === 'Đã hủy') return;
+        
+        // Lặp qua từng sản phẩm trong đơn hàng
+        donHang.sp.forEach(sanPhamTrongDonHang => {
+            let tenHang = sanPhamTrongDonHang.sanPham.company;
+            let soLuong = sanPhamTrongDonHang.soLuong;
+            let donGia = stringToNum(sanPhamTrongDonHang.sanPham.price);
+            let thanhTien = soLuong * donGia;
+            let d=new Date(donHang.ngaygio);
+            if (d >= from && d <= to){
+                var c=new Date(d).toLocaleDateString();
+                if(!thongKengaygio[c]) {
+                    thongKengaygio[c] = {
+                        soLuongBanRa: 0,
+                        doanhThu: 0,
+                    }
+                }         
+            
+            thongKengaygio[c].soLuongBanRa += soLuong;
+            thongKengaygio[c].doanhThu += thanhTien;
+            }
+        })
+        
+    })
+    let colors = getListRandomColor(Object.keys(thongKengaygio).length);
+    /*if(i==1) {
+        addChart('myChart1', createChartConfig(
+            'Số lượng bán ra',
+            'bar', 
+            Object.keys(thongKengaygio), 
+            Object.values(thongKengaygio).map(_ =>  _.soLuongBanRa),
+            colors,
+        ));
+        //document.getElementById("demo").innerHTML = inp;
+        addChart('myChart2', createChartConfig(
+            'Doanh thu',
+            'doughnut', 
+            Object.keys(thongKengaygio), 
+            Object.values(thongKengaygio).map(_ =>  _.doanhThu),
+            colors,
+        ));
+        i=0;
+        
+    }
+    else{*/
+        addChart('myChart1', createChartConfig(
+            'Số lượng bán ra',
+            'bar', 
+            Object.keys(thongKengaygio), 
+            Object.values(thongKengaygio).map(_ =>  _.soLuongBanRa),
+            colors,
+        ));
+
+        addChart('myChart2', createChartConfig(
+            'Doanh thu',
+            'doughnut', 
+            Object.keys(thongKengaygio), 
+            Object.values(thongKengaygio).map(_ =>  _.doanhThu),
+            colors,
+        ));
+        
+    //}
+}
+function locDonHangTheoKhoangNgay1() {
+    var inp = document.getElementById('Company1').value;
+    var from = document.getElementById('fromDate1').valueAsDate;
+    var to = document.getElementById('toDate1').valueAsDate;
+    var danhSachDonHang = getListDonHang(true);
+    var thongKengaygio = {};
+    var thongKengaygio0 = {};
+    var i=0;
+    //var thongKeHang = {};
+    if(inp=='all'){locDonHangTheoKhoangNgay2();return;};
+    danhSachDonHang.forEach(donHang => {
+        // Nếu đơn hàng bị huỷ thì không tính vào số lượng bán ra
+        if(donHang.tinhTrang === 'Đã hủy') return;
+        
+        // Lặp qua từng sản phẩm trong đơn hàng
+        donHang.sp.forEach(sanPhamTrongDonHang => {
+            let tenHang = sanPhamTrongDonHang.sanPham.company;
+            let soLuong = sanPhamTrongDonHang.soLuong;
+            let donGia = stringToNum(sanPhamTrongDonHang.sanPham.price);
+            let thanhTien = soLuong * donGia;
+            let d=new Date(donHang.ngaygio);
+            if (d >= from && d <= to && inp==tenHang){
+                var c=new Date(d).toLocaleDateString();
+                if(!thongKengaygio[c]) {
+                    thongKengaygio[c] = {
+                        soLuongBanRa: 0,
+                        doanhThu: 0,
+                    }
+                }         
+            
+            thongKengaygio[c].soLuongBanRa += soLuong;
+            thongKengaygio[c].doanhThu += thanhTien;
+            }
+        })
+        
+    })
+    let colors = getListRandomColor(Object.keys(thongKengaygio).length);
+    if(i==1) {
+        addChart('myChart1', createChartConfig(
+            'Số lượng bán ra',
+            'bar', 
+            Object.keys(thongKengaygio), 
+            Object.values(thongKengaygio).map(_ =>  _.soLuongBanRa),
+            colors,
+        ));
+        //document.getElementById("demo").innerHTML = inp;
+        addChart('myChart2', createChartConfig(
+            'Doanh thu',
+            'doughnut', 
+            Object.keys(thongKengaygio), 
+            Object.values(thongKengaygio).map(_ =>  _.doanhThu),
+            colors,
+        ));
+        i=0;
+        
+    }
+    else{
+        addChart('myChart1', createChartConfig(
+            'Số lượng bán ra',
+            'bar', 
+            Object.keys(thongKengaygio), 
+            Object.values(thongKengaygio).map(_ =>  _.soLuongBanRa),
+            colors,
+        ));
+
+        addChart('myChart2', createChartConfig(
+            'Doanh thu',
+            'doughnut', 
+            Object.keys(thongKengaygio), 
+            Object.values(thongKengaygio).map(_ =>  _.doanhThu),
+            colors,
+        ));
+        
+    }
+}
+/*   
+
+    addChart('myChart1', createChartConfig(
+        'Số lượng bán ra',
+        'bar', 
+        Object.keys(thongKengaygio), 
+        Object.values(thongKengaygio).map(_ =>  _.soLuongBanRa),
+        colors,
+    ));
+
+    addChart('myChart2', createChartConfig(
+        'Doanh thu',
+        'doughnut', 
+        Object.keys(thongKengaygio), 
+        Object.values(thongKengaygio).map(_ =>  _.doanhThu),
+        colors,
+    ));
+    /*
+    // Lấy mảng màu ngẫu nhiên để vẽ đồ thị
+    
+    danhSachDonHang.forEach(donHang => {
+        //
+        // Nếu đơn hàng bị huỷ thì không tính vào số lượng bán ra
+        if(donHang.tinhTrang === 'Đã hủy') return;
+        // Lặp qua từng sản phẩm trong đơn hàng
+        donHang.sp.forEach(sanPhamTrongDonHang => {
+            let tenHang = sanPhamTrongDonHang.sanPham.company;
+            let d=new Date(donHang.ngaygio).toLocaleString();
+            //to.setDate(to.getDate() +1 );
+            //document.getElementById("demo").innerHTML = inp;
+            //if(inp == tenHang){
+                //document.getElementById("demo").innerHTML = inp;
+                
+                //alert('Không thể duyệt đơn đã hủy !');
+                
+                /*else{
+                    //myChart1.offsetParent(myChart1);
+                    addChart('myChart1', createChartConfig(
+                        'Số lượng bán ra',
+                        'bar', 
+                        Object.keys(thongKeHang0), 
+                        Object.values(thongKeHang0).map(_ =>  _.soLuongBanRa),
+                        colors,
+                    ));
+                }
+            //}
+            
+            
+        
+        })
+
+    })*/
+    
+
 
 // ======================= Các Tab =========================
 function addEventChangeTab() {
@@ -198,12 +397,51 @@ function addTableProducts() {
 
     tc.innerHTML = s;
 }
+function xoaSanPham(masp, tensp) {
+    window.confirm('Bạn có chắc muốn xóa ' + tensp)
+        
+    
+}
+// Duyệt
+function duyet(maDonHang, duyetDon) {
+    var u = getListUser();
+    for(var i = 0; i < u.length; i++) {
+        for(var j = 0; j < u[i].donhang.length; j++) {
+            if(u[i].donhang[j].ngaymua == maDonHang) {
+                if(duyetDon) {
+                    if(u[i].donhang[j].tinhTrang == 'Đang chờ xử lý') {
+                        u[i].donhang[j].tinhTrang = 'Đã xử lý';
+                    
+                    } else if(u[i].donhang[j].tinhTrang == 'Đã hủy') {
+                        alert('Không thể duyệt đơn đã hủy !');
+                        return;
+                    }
+                } else {
+                    if(u[i].donhang[j].tinhTrang == 'Đang chờ xử lý') {
+                        if(window.confirm('Bạn có chắc muốn hủy đơn hàng này. Hành động này sẽ không thể khôi phục lại !'))
+                            u[i].donhang[j].tinhTrang = 'Đã hủy';
+                    
+                    } else if(u[i].donhang[j].tinhTrang == 'Đã xử lý') {
+                        alert('Không thể hủy đơn hàng đã giao !');
+                        return;
+                    }
+                }
+                break;
+            }
+        }
+    }
 
+    // lưu lại
+    setListUser(u);
+
+    // vẽ lại
+    addTableDonHang();
+}
 // Tìm kiếm
 function timKiemSanPham(inp) {
     var kieuTim = document.getElementsByName('kieuTimSanPham')[0].value;
     var text = inp.value;
-
+    
     // Lọc
     var vitriKieuTim = {'ma':1, 'ten':2}; // mảng lưu vị trí cột
 
@@ -237,12 +475,10 @@ function layThongTinSanPhamTuTable(id) {
 
     var screen = tr[11].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var os = tr[12].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
-    var camara = tr[13].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var camaraFront = tr[14].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var cpu = tr[15].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var ram = tr[16].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var rom = tr[17].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
-    var microUSB = tr[18].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var battery = tr[19].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
 
     if(isNaN(price)) {
@@ -275,12 +511,10 @@ function layThongTinSanPhamTuTable(id) {
             "detail": {
                 "screen": screen,
                 "os": os,
-                //"camara": camara,
                 "camaraFront": camaraFront,
                 "cpu": cpu,
                 "ram": ram,
                 "rom": rom,
-                //"microUSB": microUSB,
                 "battery": battery
             },
             "masp" : masp
@@ -447,14 +681,16 @@ function addKhungSuaSanPham(masp) {
             <td>Hệ điều hành:</td>
             <td><input type="text" value="`+sp.detail.os+`"></td>
         </tr>
-        
+
+        <tr>
+
+        <tr>
+            <td>Camara trước:</td>
+            <td><input type="text" value="`+sp.detail.camaraFront+`"></td>
+        </tr>
         <tr>
             <td>CPU:</td>
             <td><input type="text" value="`+sp.detail.cpu+`"></td>
-        </tr>
-        <tr>
-            <td>Card đồ họa:</td>
-            <td><input type="text" value="`+sp.detail.camaraFront+`"></td>
         </tr>
         <tr>
             <td>RAM:</td>
@@ -464,6 +700,8 @@ function addKhungSuaSanPham(masp) {
             <td>Bộ nhớ trong:</td>
             <td><input type="text" value="`+sp.detail.rom+`"></td>
         </tr>
+
+        <tr>
         
         <tr>
             <td>Dung lượng Pin:</td>
@@ -472,6 +710,8 @@ function addKhungSuaSanPham(masp) {
         <tr>
             <td colspan="2"  class="table-footer"> <button onclick="suaSanPham('`+sp.masp+`')">SỬA</button> </td>
         </tr>
+
+        
     </table>`
     var khung = document.getElementById('khungSuaSanPham');
     khung.innerHTML = s;
@@ -564,6 +804,7 @@ function getListDonHang(traVeDanhSachSanPham = false) {
         for(var j = 0; j < u[i].donhang.length; j++) {
             // Tổng tiền
             var tongtien = 0;
+            
             for(var s of u[i].donhang[j].sp) {
                 var timsp = timKiemTheoMa(list_products, s.ma);
                 if(timsp.promo.name == 'giareonline') tongtien += stringToNum(timsp.promo.value);
@@ -611,7 +852,7 @@ function locDonHangTheoKhoangNgay() {
     for (var tr of listTr_table) {
         var td = tr.getElementsByTagName('td')[5].innerHTML;
         var d = new Date(td);
-
+        
         if (d >= from && d <= to) {
             tr.style.display = '';
         } else {
@@ -723,6 +964,21 @@ function openThemNguoiDung() {
     window.alert('Not Available!');
 }
 
+function xoaNguoiDung(taikhoan) {
+    if(window.confirm('Xác nhận xóa '+taikhoan+'? \nMọi dữ liệu về '+taikhoan+' sẽ mất! Bao gồm cả những đơn hàng của '+taikhoan)) {
+        var listuser = getListUser();
+        for(var i = 0; i < listuser.length; i++) {
+            if(listuser[i].username == taikhoan) {
+                listuser.splice(i, 1); // xóa
+                setListUser(listuser); // lưu thay đổi
+                localStorage.removeItem('CurrentUser'); // đăng xuất khỏi tài khoản hiện tại (current user)
+                addTableKhachHang(); // vẽ lại bảng khách hàng
+                addTableDonHang(); // vẽ lại bảng đơn hàng
+                return;
+            }
+        }
+    }
+}
 
 
 
