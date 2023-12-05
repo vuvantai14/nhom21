@@ -164,7 +164,6 @@ function changeDiaChi() {
 function xoaHet() {
 >>>>>>> Stashed changes
 	if (currentuser.products.length) {
-		
 			capNhatMoiThu();
 		}
 	}
