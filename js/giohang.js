@@ -92,7 +92,7 @@ function addProductToTable(user) {
 				<td colspan="4">TỔNG TIỀN: </td>
 				<td class="alignRight">` + numToString(totalPrice) + ` ₫</td>
 				<td class="thanhtoan" onclick="thanhToan()"> Thanh Toán </td>
-				<td class="chonDiaChi" onclick="chonDiaChi()"> Chọn Địa Chỉ </td>
+				<td class="chonDiaChi" onclick="chonDiaChi()"id ="chondia"> Chọn Địa Chỉ </td>
 			</tr>
 		</tbody>
 	`;
@@ -131,7 +131,7 @@ function thanhToan() {
 	}
 }
 
-function chonDiaChi() {
+/*function chonDiaChi() {
 	document.write(`
 	   			<table>
                     <tr>
@@ -151,7 +151,7 @@ function chonDiaChi() {
                 </table>
             </td>
 			`);	
-}
+}*/
 function changeDiaChi() {
 	if (currentuser.products.length) {
 		if (window.confirm('Bạn đã thay đổi địa chỉ giao hàng!!')) {
