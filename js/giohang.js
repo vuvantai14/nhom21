@@ -92,7 +92,9 @@ function addProductToTable(user) {
 				<td colspan="4">TỔNG TIỀN: </td>
 				<td class="alignRight">` + numToString(totalPrice) + ` ₫</td>
 				<td class="thanhtoan" onclick="thanhToan()"> Thanh Toán </td>
-				<td class="chonDiaChi" onclick="chonDiaChi()"id ="chondia"> Chọn Địa Chỉ </td>
+				<td class="chonDiaChi" onclick="chonDiaChi()"> Chọn Địa Chỉ </td>
+							<p id="chondia"></p>
+							
 			</tr>
 		</tbody>
 	`;
@@ -131,35 +133,41 @@ function thanhToan() {
 	}
 }
 
-/*function chonDiaChi() {
-	document.write(`
-	   			<table>
-                    <tr>
-                        <td> <div>Địa chỉ cũ:</div> </td>
-                        <td> <div><input type="text"></div> </td>
-                    </tr>
-                    <tr>
-                        <td> <div>Địa chỉ mới:</div> </td>
-                        <td> <div><input type="text"></div> </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td> 
-                            <div><button onclick="changeDiaChi()">Đồng ý</button></div> 
-                        </td>
-                    </tr>
-                </table>
-            </td>
-			`);	
-}*/
+function chonDiaChi() {
+	document.getElementById("chondia").innerHTML = `  
+	  <table>
+	  <tr>
+	  <td >
+		  <table >
+			  <tr>
+				  <td> <div>Địa Chỉ Cũ:</div> </td>
+				  <td> <div><input type="text"></div> </td>
+			  </tr>
+			  
+			  <tr>
+				  <td> <div>Đia Chỉ Mới :</div> </td>
+				  <td> <div><input type="text"></div> </td>
+			  </tr>
+			  <tr>
+				  <td></td>
+				  <td> 
+					  <div><button onclick="changeDiaChi()">Đồng ý</button></div> 
+				  </td>
+			  </tr>
+		  </table>
+	  </td>
+  </tr>	
+	</table>`
+;
+}
+
 function changeDiaChi() {
 	if (currentuser.products.length) {
-		if (window.confirm('Bạn đã thay đổi địa chỉ giao hàng!!')) {
-			currentuser.products = [];
+		
 			capNhatMoiThu();
 		}
 	}
-}
+
 // Cập nhật số lượng lúc nhập số lượng vào input
 function capNhatSoLuongFromInput(inp, masp) {
 	var soLuongMoi = Number(inp.value);
