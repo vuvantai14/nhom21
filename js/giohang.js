@@ -129,7 +129,7 @@ function thanhToan() {
 		addAlertBox('Các sản phẩm đã được gửi vào đơn hàng và chờ xử lý.', '#17c671', '#fff', 4000);
 	}
 }
-<<<<<<< Updated upstream
+
 
 function chonDiaChi() {
 	document.getElementById("chondia").innerHTML = `  
@@ -160,13 +160,12 @@ function chonDiaChi() {
 }
 
 function changeDiaChi() {
-=======
-function xoaHet() {
->>>>>>> Stashed changes
 	if (currentuser.products.length) {
+		
 			capNhatMoiThu();
 		}
 	}
+
 
 // Cập nhật số lượng lúc nhập số lượng vào input
 function capNhatSoLuongFromInput(inp, masp) {
