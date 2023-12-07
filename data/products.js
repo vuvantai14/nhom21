@@ -8,7 +8,7 @@ var list_products = [
     "rateCount": 10,
     "promo": {
         "name": "giareonline",
-        "value": "19.390.000"
+        "value": "10.390.000"
     },
     "detail": {
         "screen": "OLED, 13.3', Super Retina",
@@ -31,7 +31,7 @@ var list_products = [
     "rateCount": 10,
     "promo": {
         "name": "giareonline",
-        "value": "26.590.000"
+        "value": "12.590.000"
     },
     "detail": {
         "screen": "OLED, 13.6', Retina HD",
@@ -50,12 +50,12 @@ var list_products = [
     "name": "Apple Macbook Pro 13 M2 2022 8GB 256GB",
     "company": "MacBook",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/p/r/pro-m2.jpg",
-    "price": "35.990.000",
+    "price": "19.990.000",
     "star": 5,
     "rateCount": 100,
     "promo": {
         "name": "giareonline",
-        "value": "29.490.000"
+        "value": "16.490.000"
     },
     "detail": {
         "screen": "OLED, 13', 16 triệu màu",
@@ -120,12 +120,12 @@ var list_products = [
     "name": "Macbook Air 15 inch M2 2023 8GB 256GB",
     "company": "MacBook",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/m/a/macbook_air_m2_8gb.png",
-    "price": "32.990.000",
+    "price": "25.990.000",
     "star": 4,
     "rateCount": 500,
     "promo": {
         "name": "giareonline",
-        "value": "30.390.000"
+        "value": "21.390.000"
     },
     "detail": {
         "screen": "OLED, 15.4', Full HD+",
@@ -189,12 +189,12 @@ var list_products = [
     "name": "Laptop Asus TUF GAMING F15",
     "company": "Asus",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/l/a/laptop-asus-tuf-gaming-f15-fx506hf-hn014w.png",
-    "price": "21.990.000",
+    "price": "28.990.000",
     "star": 4,
     "rateCount": 678,
     "promo": {
         "name": "giareonline",
-        "value": "16.990.000"
+        "value": "25.990.000"
     },
     "detail": {
         "screen": "OLED, 15.6 ', Full HD+",
@@ -212,12 +212,12 @@ var list_products = [
     "name": "Macbook Pro 16 inch M1 Max 10 CPU",
     "company": "MacBook",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/c/l/cl.png",
-    "price": "92.990.000",
+    "price": "30.990.000",
     "star": 4,
     "rateCount": 804,
     "promo": {
         "name": "giareonline",
-        "value": "69.990.000"
+        "value": "27.990.000"
     },
     "detail": {
         "screen": "16.2 ,120Hz, Liquid Retina, Mini LED, XDR",
@@ -235,12 +235,12 @@ var list_products = [
     "name": "Laptop ASUS ZenBook",
     "company": "Asus",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/2/_/2.17_1.png",
-    "price": "23.900.000",
+    "price": "33.900.000",
     "star": 4,
     "rateCount": 456,
     "promo": {
         "name": "giareonline",
-        "value": "17.990.000"
+        "value": "30.990.000"
     },
     "detail": {
         "screen": "Tấm nền OLED/AMOLED,14' ",
@@ -282,12 +282,12 @@ var list_products = [
     "name": "Laptop ASUS ROG Flow",
     "company": "Asus",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/1/0/10h42.png",
-    "price": "30.490.000",
+    "price": "24.490.000",
     "star": 4,
     "rateCount": 500,
     "promo": {
         "name": "giareonline",
-        "value": "29.990.000"
+        "value": "20.990.000"
     },
     "detail": {
         "screen": "Tấm nền IPS, 13.4 ', Full HD+",
@@ -325,4 +325,119 @@ var list_products = [
         "battery": "Khoảng 7 tiếng"
     },
     "masp": "App6"
+},{
+    "name": "Laptop gaming MSI GF63 Thin",
+    "company": "MSI",
+    "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/1/0/10h28.png",
+    "price": "25.490.000",
+    "star": 4,
+    "rateCount": 804,
+    "promo": {
+        "name": "giareonline",
+        "value": "20.990.000"
+    },
+    "detail": {
+        "screen": "Tấm nền IPS, 15.6', Full HD",
+        "os": "Windows 11 Home",
+        //"camara": "16 MP và 2 MP (2 camera)",
+        "cpu": "Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB",
+        "camaraFront": "NVIDIA GeForce GTX1650 4GB GDDR6",
+        "ram": "8 GB",
+        "rom": "512 GB SSD NVMe PCIe, 1 khe HDD 2.5 inch",
+        //"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+        "battery": "3 Cell 51WHr"
+    },
+    "masp": "MSI2"
+},{
+    "name": "Laptop gaming MSI GF63 Thin",
+    "company": "MSI",
+    "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_8__1_76.png",
+    "price": "30.490.000",
+    "star": 4,
+    "rateCount": 804,
+    "promo": {
+        "name": "giareonline",
+        "value": "25.990.000"
+    },
+    "detail": {
+        "screen": "Tấm nền IPS, 15.6', Full HD",
+        "os": "Windows 11 Home",
+        //"camara": "16 MP và 2 MP (2 camera)",
+        "cpu": "Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB",
+        "camaraFront": "NVIDIA GeForce GTX1650 4GB GDDR6",
+        "ram": "8 GB",
+        "rom": "512 GB SSD NVMe PCIe, 1 khe HDD 2.5 inch",
+        //"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+        "battery": "3 Cell 51WHr"
+    },
+    "masp": "MSI3"
+},{
+    "name": "Laptop gaming MSI GF63 Thin",
+    "company": "MSI",
+    "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/5/h/5h24.png",
+    "price": "40.490.000",
+    "star": 4,
+    "rateCount": 804,
+    "promo": {
+        "name": "giareonline",
+        "value": "35.990.000"
+    },
+    "detail": {
+        "screen": "Tấm nền IPS, 15.6', Full HD",
+        "os": "Windows 11 Home",
+        //"camara": "16 MP và 2 MP (2 camera)",
+        "cpu": "Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB",
+        "camaraFront": "NVIDIA GeForce GTX1650 4GB GDDR6",
+        "ram": "8 GB",
+        "rom": "512 GB SSD NVMe PCIe, 1 khe HDD 2.5 inch",
+        //"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+        "battery": "3 Cell 51WHr"
+    },
+    "masp": "MSI4"
+},{
+    "name": "Laptop gaming MSI GF63 Thin",
+    "company": "MSI",
+    "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_1__2_16.png    ",
+    "price": "29.490.000",
+    "star": 4,
+    "rateCount": 804,
+    "promo": {
+        "name": "giareonline",
+        "value": "26.990.000"
+    },
+    "detail": {
+        "screen": "Tấm nền IPS, 15.6', Full HD",
+        "os": "Windows 11 Home",
+        //"camara": "16 MP và 2 MP (2 camera)",
+        "cpu": "Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB",
+        "camaraFront": "NVIDIA GeForce GTX1650 4GB GDDR6",
+        "ram": "8 GB",
+        "rom": "512 GB SSD NVMe PCIe, 1 khe HDD 2.5 inch",
+        //"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+        "battery": "3 Cell 51WHr"
+    },
+    "masp": "MSI5"
+},{
+    "name": "Laptop gaming MSI GF63 Thin",
+    "company": "MSI",
+    "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_20_.png",
+    "price": "32.490.000",
+    "star": 4,
+    "rateCount": 804,
+    "promo": {
+        "name": "giareonline",
+        "value": "30.990.000"
+    },
+    "detail": {
+        "screen": "Tấm nền IPS, 15.6', Full HD",
+        "os": "Windows 11 Home",
+        //"camara": "16 MP và 2 MP (2 camera)",
+        "cpu": "Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB",
+        "camaraFront": "NVIDIA GeForce GTX1650 4GB GDDR6",
+        "ram": "8 GB",
+        "rom": "512 GB SSD NVMe PCIe, 1 khe HDD 2.5 inch",
+        //"microUSB": "MicroSD, hỗ trợ tối đa 128 GB",
+        "battery": "3 Cell 51WHr"
+    },
+    "masp": "MSI6"
 }]
