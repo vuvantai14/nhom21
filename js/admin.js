@@ -598,7 +598,9 @@ function suaSanPham(masp) {
 
     document.getElementById('khungSuaSanPham').style.transform = 'scale(0)';
 }
-
+function xoahinh(){
+    alert('Đã xóa hình');
+}
 function addKhungSuaSanPham(masp) {
     var sp;
     for(var p of list_products) {
@@ -640,6 +642,7 @@ function addKhungSuaSanPham(masp) {
             <td>Hình:</td>
             <td>
                 <img class="hinhDaiDien" id="anhDaiDienSanPhamSua" src="`+sp.img+`">
+                <button onclick=xoahinh()>Bỏ Hình<i class="fa fa-close"></i></button>
                 <input type="file" accept="image/*" onchange="capNhatAnhSanPham(this.files, 'anhDaiDienSanPhamSua')">
             </td>
         </tr>
