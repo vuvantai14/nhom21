@@ -202,6 +202,7 @@ function locDonHangTheoKhoangNgay1() {
     var thongKengaygio0 = {};
     var i=0;
     //var thongKeHang = {};
+    if(!from || !to) {addThongKe();return;}
     if(inp=='all'){locDonHangTheoKhoangNgay2();return;};
     danhSachDonHang.forEach(donHang => {
         // Nếu đơn hàng bị huỷ thì không tính vào số lượng bán ra

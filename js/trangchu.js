@@ -377,7 +377,7 @@ function addChoosedFilter(type, textInside) {
 
 	var divChoosedFilter = document.getElementsByClassName('choosedFilter')[0];
 	divChoosedFilter.innerHTML += tag_a;
-
+	document.getElementById("demo").innerHTML = 'Kết quả tìm kiếm';
 	var deleteAll = document.getElementById('deleteAllFilter');
 	deleteAll.style.display = "block";
 	deleteAll.href = window.location.href.split('?')[0];
