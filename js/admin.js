@@ -25,7 +25,43 @@ function getListRandomColor(length) {
     }
     return result;
 }
+function addadmin() {
+    document.write(`
+	<div style="text-align: center;" id="addaddmin">
+        <div class="taikhoan">
+            <div class="tab-content">
+                <div id="login">
+                    <h1>Chào mừng admin!</h1>
 
+                    <form onsubmit="return logIn(this);">
+
+                        <div class="field-wrap">
+                            <label>
+                                Tên đăng nhập<span class="req">*</span>
+                            </label>
+                            <input name='username' type="text" value="tri"/>
+                        </div> <!-- /user name -->
+
+                        <div class="field-wrap">
+                            <label>
+                                Mật khẩu<span class="req">*</span>
+                            </label>
+                            <input name="pass" type="password" value="tri"/>
+                        </div> <!-- pass -->
+
+                        <button onclick="change()" />Tiếp tục</button>
+
+                    </form> <!-- /form -->
+
+                
+            </div><!-- tab-content -->
+
+        </div> <!-- /taikhoan -->
+    </div>`);
+}
+function change(){
+    window.confirm('XIN CHÀO ADMIN ')
+}
 function addChart(id, chartOption) {
     var ctx = document.getElementById(id).getContext('2d');
     var chart = new Chart(ctx, chartOption);
@@ -400,8 +436,6 @@ function addTableProducts() {
 }
 function xoaSanPham(masp, tensp) {
     window.confirm('Bạn có chắc muốn xóa ' + tensp)
-        
-    
 }
 // Duyệt
 function duyet(maDonHang, duyetDon) {
