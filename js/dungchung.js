@@ -1,6 +1,6 @@
 var adminInfo = [{
     "username": "admin",
-    "pass": "adadad"
+    "pass": "admin"
 }];
 
 function getListAdmin() {
@@ -190,7 +190,7 @@ function addProductToTable(user) {
 
 function signUp1() {
     var newUser = new User("tri", "tri", "tri", "tri", "tri@gmail.com","273 An Dương Vương, Phường 3, Quận 5");
-
+    
     // Lấy dữ liệu các khách hàng hiện có
     var listUser = getListUser();
 

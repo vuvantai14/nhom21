@@ -161,7 +161,6 @@ function chonDiaChi() {
 
 function changeDiaChi() {
 	if (currentuser.products.length) {
-		
 			capNhatMoiThu();
 		}
 	}
