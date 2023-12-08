@@ -2,12 +2,12 @@ window.onload = function () {
 	khoiTao();
 
 	// Thêm hình vào banner
-	addBanner("img/banners/banner0.gif", "img/banners/banner0.gif");
+	/*addBanner("img/banners/banner0.gif", "img/banners/banner0.gif");
 	var numBanner = 9; // Số lượng hình banner
 	for (var i = 1; i <= numBanner; i++) {
 		var linkimg = "img/banners/banner" + i + ".png";
 		addBanner(linkimg, linkimg);
-	}
+	}*/
 
 	// Khởi động thư viện hỗ trợ banner - chỉ chạy khi đã tạo hình trong banner
 	var owl = $('.owl-carousel');
@@ -121,7 +121,11 @@ function phanTich_URL(filters, saveFilter) {
 		var dauBang = filters[i].split('=');
 
 		switch (dauBang[0]) {
-
+			case 'search':
+				dauBang[1] = dauBang[1].split('+').join(' ');
+				result = timKiemTheoTen(result, dauBang[1]);
+				if (saveFilter) filtersFromUrl.search = dauBang[1];
+				break;
 			case 'price':
 				if (saveFilter) filtersFromUrl.price = dauBang[1];
 
