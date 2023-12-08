@@ -326,7 +326,7 @@ var list_products = [
     },
     "masp": "App6"
 },{
-    "name": "Laptop gaming MSI GF63 Thin",
+    "name": "Laptop MSI GP66 Leopard",
     "company": "MSI",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/1/0/10h28.png",
     "price": "25.490.000",
@@ -349,7 +349,7 @@ var list_products = [
     },
     "masp": "MSI2"
 },{
-    "name": "Laptop gaming MSI GF63 Thin",
+    "name": "Laptop MSI Katana 15 ",
     "company": "MSI",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_8__1_76.png",
     "price": "30.490.000",
@@ -372,7 +372,7 @@ var list_products = [
     },
     "masp": "MSI3"
 },{
-    "name": "Laptop gaming MSI GF63 Thin",
+    "name": "Laptop MSI Gaming GF63 Thin 11UD",
     "company": "MSI",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/5/h/5h24.png",
     "price": "40.490.000",
@@ -395,7 +395,7 @@ var list_products = [
     },
     "masp": "MSI4"
 },{
-    "name": "Laptop gaming MSI GF63 Thin",
+    "name": "Laptop  MSI Katana GF66",
     "company": "MSI",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_1__2_16.png    ",
     "price": "29.490.000",
@@ -418,7 +418,7 @@ var list_products = [
     },
     "masp": "MSI5"
 },{
-    "name": "Laptop gaming MSI GF63 Thin",
+    "name": "Laptop MSI Crosshair 15",
     "company": "MSI",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_20_.png",
     "price": "32.490.000",
