@@ -71,7 +71,7 @@ var list_products = [
     },
     "masp": "App2"
 }, {
-    "name": "Asus VivoBook 15 OLED",
+    "name": "Laptop Asus VivoBook 15 OLED",
     "company": "Asus",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_1__1_120.png",
     "price": "20.990.000",
@@ -94,7 +94,7 @@ var list_products = [
     },
     "masp": "Asu0"
 }, {
-    "name": "Asus VivoBook Go 14",
+    "name": "Laptop Asus VivoBook Go 14",
     "company": "Asus",
     "img": "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:80/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_-_2023-06-08t005130.908.png",
     "price": "14.490.000",

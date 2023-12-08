@@ -59,9 +59,7 @@ function addadmin() {
         </div> <!-- /taikhoan -->
     </div>`);
 }
-function change(){
-    window.confirm('XIN CHÀO ADMIN ')
-}
+
 function addChart(id, chartOption) {
     var ctx = document.getElementById(id).getContext('2d');
     var chart = new Chart(ctx, chartOption);
