@@ -1001,19 +1001,7 @@ function openThemNguoiDung() {
 }
 
 function xoaNguoiDung(taikhoan) {
-    if(window.confirm('Xác nhận xóa '+taikhoan+'? \nMọi dữ liệu về '+taikhoan+' sẽ mất! Bao gồm cả những đơn hàng của '+taikhoan)) {
-        var listuser = getListUser();
-        for(var i = 0; i < listuser.length; i++) {
-            if(listuser[i].username == taikhoan) {
-                listuser.splice(i, 1); // xóa
-                setListUser(listuser); // lưu thay đổi
-                localStorage.removeItem('CurrentUser'); // đăng xuất khỏi tài khoản hiện tại (current user)
-                addTableKhachHang(); // vẽ lại bảng khách hàng
-                addTableDonHang(); // vẽ lại bảng đơn hàng
-                return;
-            }
-        }
-    }
+    window.confirm('Xác nhận xóa '+taikhoan+'? \nMọi dữ liệu về '+taikhoan+' sẽ mất! Bao gồm cả những đơn hàng của '+taikhoan)
 }
 
 
