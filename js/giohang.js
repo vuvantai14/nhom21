@@ -135,7 +135,7 @@ function chonDiaChi() {
 	document.getElementById("chondia").innerHTML = `  
 	  <table>
 	  <tr>
-	  <td >
+	  <td>
 		  <table >
 			  <tr>
 				  <td> <div>Địa Chỉ Cũ:</div> </td>
@@ -143,7 +143,7 @@ function chonDiaChi() {
 			  </tr>
 			  
 			  <tr>
-				  <td> <div>Đia Chỉ Mới :</div> </td>
+				  <td> <div>Đia Chỉ Mới:</div> </td>
 				  <td> <div><input type="text"></div> </td>
 			  </tr>
 			  <tr>
