@@ -39,14 +39,14 @@ function addadmin() {
                             <label>
                                 Tên đăng nhập<span class="req">*</span>
                             </label>
-                            <input name='username' type="text" value="tri"/>
+                            <input name='username' type="text" value="admin"/>
                         </div> <!-- /user name -->
 
                         <div class="field-wrap">
                             <label>
                                 Mật khẩu<span class="req">*</span>
                             </label>
-                            <input name="pass" type="password" value="tri"/>
+                            <input name="pass" type="password" value="admin"/>
                         </div> <!-- pass -->
 
                         <button onclick="change()" />Tiếp tục</button>
