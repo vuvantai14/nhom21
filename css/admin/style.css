@@ -8,7 +8,7 @@
 body,
 html {
     min-width: 1024px;
-    background-color: #2f353a;
+    background-color: #28282e;
 }
 
 hr {
@@ -30,8 +30,8 @@ header {
     z-index: 10;
     width: 100%;
     /* position: sticky; */
-    padding: 20px 10px;
-    background-color: #3a4149;
+    padding: 5px 5px;
+    background-color: #f4f8f3;
     border-bottom: 1px solid #23282c;
 }
 
