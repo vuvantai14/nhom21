@@ -1,4 +1,12 @@
 /* Header */
+.header .container {
+    flex: 1;
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+	padding-right: 5px;
+    justify-content: space-between;
+}
 	.header {
 		position: sticky;
 		position: -webkit-sticky; /* Safari */
